@@ -1,6 +1,6 @@
 
-let index
-
-
-
-export default []
+export const Routes = {
+    Profile: '/profile',
+    
+    Error: '/error',
+}
