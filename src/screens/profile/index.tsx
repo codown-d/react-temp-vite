@@ -12,11 +12,16 @@ import send from "../../assets/images/send.svg";
 
 let Wen = (props) => {
   let { text } = props;
-  return (
+  if(text){
+     return (
     <div className="flex-r-c mt40" style={{ justifyContent: "flex-end" }}>
-      <div className="wen">{text}123</div>
+      <div className="wen" style={{maxWidth:'75%'}}>{text}</div>
     </div>
   );
+  }else{
+    return null
+  }
+ 
 };
 let Da = (props) => {
   let { text, avatar } = props;
@@ -26,7 +31,7 @@ let Da = (props) => {
       style={{ justifyContent: "flex-start", alignItems: "flex-end" }}
     >
       <img src={avatar} alt="" className="profile-avatar" />
-      <div className="da ml10">{text}</div>
+      <div className="da ml10" style={{maxWidth:'75%'}}>{text}</div>
     </div>
   );
 };
@@ -98,7 +103,6 @@ const Profile = () => {
         />
         <img
           src={visitorInfo?.avatar_url}
-          alt=""
           className="profile-avatar mr18"
         />
         <span className="profile-name mr18">{visitorInfo?.name}</span>
@@ -106,16 +110,14 @@ const Profile = () => {
       </div>
       <div style={{ flex: 1 }} className="profile-content" ref={endOfListRef}>
         {list.map((item, index) => {
-          let type = item.type;
-          return type === "wen" ? (
-            <Wen text={item.question} key={index} />
-          ) : (
+          return <>
+            <Wen text={item.question} key={item.id} />
             <Da
               text={item.answer}
               avatar={visitorInfo?.avatar_url}
-              key={index}
+              key={item.id+'_answer'}
             />
-          );
+          </>
         })}
       </div>
       <div className="profile-footer">
