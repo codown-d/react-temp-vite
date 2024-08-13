@@ -29,7 +29,7 @@ const Home = () => {
   }, [state])
   return <div className="cont-bg flex-c-c" style={{ justifyContent: 'space-between' }}>
     <div className="flex-c-c" style={{ paddingTop: '20%',width:"100%" }}>
-      <div className="title ">{assistantInfo.prologue}</div>
+      <div className="title ">{assistantInfo.title}</div>
       <div className="desc t-c" style={{width:"100%"}}>{assistantInfo.guide}</div>
     </div>
     <div style={{minHeight:"300px",width:'100%'}} className='p-r flex-r-c'>
