@@ -88,8 +88,9 @@ const Profile = () => {
   let scrollToBottom = useMemoizedFn(() => {
     setTimeout(() => {
       scrollTop(endOfListRef.current?.scrollHeight);
-    }, 10);
+    }, 500);
   });
+  let inputRef = useRef()
   return (
     <div className="profile flex-c-c">
       <div className="flex-r-c profile-header">
@@ -123,6 +124,7 @@ const Profile = () => {
       <div className="profile-footer">
         <input
           placeholder="Write your message"
+          ref={inputRef}
           className="input"
           onChange={(e) => {
             setInputVal(e.target.value);
@@ -138,6 +140,7 @@ const Profile = () => {
               question: inputVal,
             }).then((res) => {
               if (res.code == 1000) {
+                inputRef.current.value=''
                 getDataListFn();
                 scrollToBottom();
               }
