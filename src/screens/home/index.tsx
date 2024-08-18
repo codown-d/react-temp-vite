@@ -13,6 +13,7 @@ const Home = () => {
   let [phone, setPhone] = useState('')
   let navigate = useNavigate();
   const [state] = useUrlState({ assist_id: '', pk: '' });
+  console.log(state)
   const [assistantInfo, setAssistantInfo] = useState({ prologue: '您好！', guide: '' });
   let getAssistantInfoFn = useMemoizedFn(() => {
     getAssistantInfo(state).then(res => {
